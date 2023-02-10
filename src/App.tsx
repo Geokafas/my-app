@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { Outlet, Route, Routes } from "react-router-dom";
+import { Home } from './pages/home-page/home.page';
+import { Layout } from './utils/layout.page';
+import { PageSecond } from './pages/second-page/second.page';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+//define the structure and content
+const App = () => (
+  <Routes>
+    <Route path="/" element={<Layout children={<Outlet />} />} >
+      <Route path="/" element={<Home />} />
+      <Route path="/page2" element={<PageSecond />} />
+      </Route>
+  </Routes>
+);
 
+//memo: skip rendering the component if its props have not changed
 export default App;
