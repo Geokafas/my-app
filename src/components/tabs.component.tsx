@@ -34,8 +34,10 @@ export function Tabs({ tabs }: any) {
   return (
     <div className="text-center">
       <div className="m-auto rounded-lg">
-        <ul className="p-4 bg-white border border-gray-200 rounded-lg text-center">{titles}</ul>
-        <div className="inline-block">{contents}</div>
+        <ul className="p-4 bg-white border border-gray-200 rounded-lg text-center">
+          {titles}
+        </ul>
+        <div className="inline">{contents}</div>
       </div>
     </div>
   );

@@ -1,26 +1,18 @@
-import { title } from "process";
 import { useState } from "react";
+import { StatItem } from "../utils/interfaces/data.interface";
 
 export function Sliders({ items }: any) {
-  const [sliders, setSliders] = useState([0, 0, 0, 0]);
-  // {
-  //     "id": 2,
-  //     "title": "Our Services",
-  //     "graphText": "We create websites and campaigns that expose new opportunities",
-  //     "stats": [
-  //       { "title": "Percentage 1", "amount": 600 },
-  //       { "title": "Percentage 2", "amount": 300 },
-  //       { "title": "Percentage 3", "amount": 300 },
-  //       { "title": "Percentage 4", "amount": 800 }
-  //     ],
-  //     "formText": "Validate your info",
-  //     "formLabels": ["Your phone", "Your Email", "Your password"],
-  //     "buttonText": "Submit"
-  //   }
-  function handleSlide(e: any, i: any) {
-    //setSliders();
+  const [sliders, setSliders] = useState(items.stats);
+  function handleSlide(value: any, i: any) {
+    const newState = sliders.map((obj: StatItem, key: number) => {
+      if (key === i) {
+        return { ...obj, amount: parseInt(value) };
+      }
+      return obj;
+    });
+    setSliders(newState);
   }
-  const contents = items.stats.map((item: any, i: number) => {
+  const contents = sliders.map((item: StatItem, i: number) => {
     return (
       <div className="" key={i}>
         <label
@@ -36,8 +28,9 @@ export function Sliders({ items }: any) {
           max="1000"
           value={item.amount}
           onChange={(e) => handleSlide(e.target.value, i)}
-          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+          className="w-9/12 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
         ></input>
+        <span> {item.amount}</span>
       </div>
     );
   });

@@ -6,13 +6,15 @@ export interface Section {
     title: string;
   }>;
   graphText?: string;
-  stats?: Array<{
-    title: string;
-    amount: number;
-  }>;
+  stats?: StatItem[];
   formText?: string;
   formLabels?: string[];
   buttonText?: string;
+}
+
+export interface StatItem {
+  title: string;
+  amount: number;
 }
 
 export interface HomeData {
@@ -27,41 +29,44 @@ export interface HomeResponse {
 }
 
 export interface NavigationItem {
-    id: number;
-    title: string;
-    link: string;
-  }
-  
-  export interface NavigationResponse {
-    data: NavigationItem[];
-  }
+  id: number;
+  title: string;
+  link: string;
+}
 
-  export interface Tile {
-    icon: string;
-    title: string;
-    description: string;
-    label: string;
-  }
-  
-  export interface Page2Data {
-    id: string;
-    name: string;
-    description: string;
-    tiles: Tile[];
-  }
-  
-  export interface Page2Response {
-    data: Page2Data;
-  }
+export interface NavigationResponse {
+  data: NavigationItem[];
+}
 
-  export interface Slide {
-    id: number;
-    title: string;
-    subtitle?: string;
-    image: string;
-  }
-  
-  export interface SlideData {
-    data: Slide[];
-  }
-  
+export interface Tile {
+  icon: string;
+  title: string;
+  description: string;
+  label: string;
+}
+
+export interface Page2Data {
+  id: string;
+  name: string;
+  description: string;
+  tiles: Tile[];
+}
+
+export interface Page2Response {
+  data: Page2Data;
+}
+
+export interface Slide {
+  id: number;
+  title: string;
+  subtitle?: string;
+  image: string;
+}
+
+export interface SlideData {
+  data: Slide[];
+}
+
+export interface FormDataType {
+  [key: string]: FormDataEntryValue;
+}
