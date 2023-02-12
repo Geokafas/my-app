@@ -14,7 +14,11 @@ export function Tabs({ tabs }: any) {
          hover:bg-gray-200 focus:outline-none 
          focus:bg-gray-200 transition ease-in-out 
          duration-150 cursor-pointer
-        ${i === activeIndex ? " active" : ""}`}
+        ${
+          i === activeIndex
+            ? " active border-2 bg-gray-200 border-b-teal-500 "
+            : ""
+        }`}
         key={i}
         onClick={() => onSelectedIndex(i)}
       >
@@ -26,17 +30,17 @@ export function Tabs({ tabs }: any) {
     .filter((tab: any, i: number) => i === activeIndex)
     .map((tab: any, i: number) => {
       return (
-        <div className="p-20 px-10 leading-tight" key={i}>
+        <div className="py-10" key={i}>
           {tab.content}
         </div>
       );
     });
   return (
     <div className="text-center">
-      <div className="m-auto rounded-lg">
-        <ul className="p-4 bg-white border border-gray-200 rounded-lg text-center">
-          {titles}
-        </ul>
+      <div className="md:m-auto rounded-lg">
+        <div className="container mx-auto">
+          <ul className="p-4 bg-white rounded-lg text-end">{titles}</ul>
+        </div>
         <div className="inline">{contents}</div>
       </div>
     </div>

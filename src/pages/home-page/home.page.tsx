@@ -24,5 +24,14 @@ export function Home() {
       ) : null,
     },
   ];
-  return <Tabs tabs={tabsData} />;
+  return (
+    <>
+      {!loading ? (
+        <h1 className="text-3xl font-bold pb-5 text-center">
+          {data.data.description}
+        </h1>
+      ) : null}
+      <Tabs tabs={tabsData} />
+    </>
+  );
 }

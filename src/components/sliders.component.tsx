@@ -34,5 +34,10 @@ export function Sliders({ items }: any) {
       </div>
     );
   });
-  return <>{contents}</>;
+  return (
+    <>
+      <h1 className="text-2xl pb-20 text-center">{items.graphText}</h1>
+      {contents}
+    </>
+  );
 }

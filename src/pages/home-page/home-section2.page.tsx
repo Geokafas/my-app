@@ -4,13 +4,13 @@ import { Sliders } from "../../components/sliders.component";
 export function HomeSectionSecond({ items }: any) {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">{items.title}</h1>
-      <div className="grid grid-rows-1 grid-flow-col gap-8">
-        <section className="sliders col-span-1 w-96">
+      <div className="grid md:grid-rows-1 md:grid-flow-col md:gap-8 grid-flow-row auto-rows-max">
+        <section className="sliders col-span-1 w-11/12  md:justify-self-end justify-self-center pt-24">
+          <h1 className="text-sky-400 pb-4 text-center">{items.title}</h1>
           <Sliders items={items} />
         </section>
-        <section className="form col-span-1 w-96">
-          <Form />
+        <section className="col-span-1 w-9/12 md:justify-self-start justify-self-center pt-24">
+          <Form items={items} />
         </section>
       </div>
     </>
