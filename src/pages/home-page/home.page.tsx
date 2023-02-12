@@ -27,7 +27,7 @@ export function Home() {
   return (
     <>
       {!loading ? (
-        <h1 className="text-3xl font-bold pb-5 text-center">
+        <h1 className="text-3xl font-bold pb-5 text-center py-10">
           {data.data.description}
         </h1>
       ) : null}

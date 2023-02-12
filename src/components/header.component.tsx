@@ -7,7 +7,7 @@ export function Header({ items }: any) {
         <a
           href={item.link}
           className="block py-2 pl-3 pr-4 text-white bg-blue-700 
-            rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+            rounded md:bg-transparent md:text-blue-700 md:p-0"
           aria-current="page"
         >
           {item.title}
@@ -18,10 +18,10 @@ export function Header({ items }: any) {
   const searchForm = document.getElementById("navbar-search") as HTMLDivElement;
   const toggleBtn = () => searchForm.classList.toggle("hidden");
   return (
-    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+    <nav className="border-gray-200 px-2 sm:px-4 py-2.5 bg-gray-900">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
         <a href="/home" className="flex items-center">
-          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+          <span className="self-center text-xl font-semibold whitespace-nowrap text-white">
             myApp
           </span>
         </a>
@@ -46,7 +46,12 @@ export function Header({ items }: any) {
             <input
               type="text"
               id="search-navbar"
-              className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block w-full p-2 pl-10 text-sm
+               border rounded-lg
+               focus:ring-blue-500
+               bg-gray-700 border-gray-600 
+               placeholder-gray-400 text-white 
+               focus:ring-blue-500 ocus:border-blue-500"
               placeholder="Search..."
             ></input>
           </div>
@@ -54,7 +59,9 @@ export function Header({ items }: any) {
             id="toggle-search"
             type="button"
             onClick={toggleBtn}
-            className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex items-center p-2 text-sm
+            rounded-lg md:hidden hover:bg-gray-700 focus:outline-none focus:ring-2
+             focus:ring-gray-600 text-gray-400"
             aria-controls="navbar-search"
             aria-expanded="false"
           >
@@ -97,11 +104,20 @@ export function Header({ items }: any) {
             <input
               type="text"
               id="search-navbar"
-              className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block w-full p-2 pl-10 text-sm 
+              border border-gray-600 rounded-lg 
+              focus:ring-blue-500 focus:border-blue-500 
+              bg-gray-700 placeholder-gray-400 
+              text-white"
               placeholder="Search..."
             ></input>
           </div>
-          <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul
+            className="flex flex-col p-4 mt-4 border
+           border-gray-700 rounded-lg md:flex-row 
+           md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 
+           md:bg-white bg-gray-800 md:bg-gray-900"
+          >
             {contents}
           </ul>
         </div>

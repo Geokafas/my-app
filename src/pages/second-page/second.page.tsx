@@ -14,11 +14,11 @@ export function PageSecond() {
       <div className="text-center">
         <div className="m-auto rounded-lg">
           {!loading ? (
-            <h1 className="text-3xl font-bold pb-24">
+            <h1 className="text-3xl font-bold pb-24 py-10">
               {data.data.description}
             </h1>
           ) : null}
-          <div className="grid grid-cols-3 gap-4 justify-items-center ">
+          <div className="grid md:grid-cols-3 gap-4 justify-items-center grid-flow-row auto-rows-min auto-cols-max justify-center py-10">
             {cards}
           </div>
         </div>

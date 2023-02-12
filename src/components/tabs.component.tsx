@@ -39,7 +39,9 @@ export function Tabs({ tabs }: any) {
     <div className="text-center">
       <div className="md:m-auto rounded-lg">
         <div className="container mx-auto">
-          <ul className="p-4 bg-white rounded-lg text-end">{titles}</ul>
+          <ul className="p-4 bg-gradient-to-r from-gray-50 to-gray-200 text-end">
+            {titles}
+          </ul>
         </div>
         <div className="inline">{contents}</div>
       </div>
