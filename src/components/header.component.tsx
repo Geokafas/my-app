@@ -1,14 +1,24 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavigationItem } from "../utils/interfaces/data.interface";
 
 export function Header({ items }: any) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const navigate = useNavigate();
+  const searchForm = document.getElementById("navbar-search") as HTMLDivElement;
+  const toggleBtn = () => searchForm.classList.toggle("hidden");
+  const onSelectedIndex = (index: number) => {
+    setActiveIndex(index);
+  };
   const contents = items.data.map((item: NavigationItem, i: number) => {
     return (
-      <li key={item.id}>
+      <li onClick={() => onSelectedIndex(i)}>
         <a
           onClick={() => handleMenuItemNavigate(item.link)}
-          className="block py-2 pl-3 pr-4 text-white bg-blue-700 
-            rounded bg-transparent md:text-blue-700 md:p-0"
+          className={`block py-2 pl-3 pr-4 text-white bg-blue-700 
+            rounded bg-transparent md:text-blue-700 md:p-0
+            cursor-pointer
+        ${i === activeIndex ? " md:text-white underline" : ""}`}
           aria-current="page"
         >
           {item.title}
@@ -16,12 +26,17 @@ export function Header({ items }: any) {
       </li>
     );
   });
+  useEffect(() => {
+    let index = window.location.pathname;
+    if (index === "/") {
+      setActiveIndex(0);
+    } else {
+      setActiveIndex(1);
+    }
+  }, [window.location.pathname]);
   function handleMenuItemNavigate(to: string) {
     navigate(to);
   }
-  const navigate = useNavigate();
-  const searchForm = document.getElementById("navbar-search") as HTMLDivElement;
-  const toggleBtn = () => searchForm.classList.toggle("hidden");
   return (
     <nav className="border-gray-200 px-2 sm:px-4 py-2.5 bg-gray-900">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
@@ -56,11 +71,15 @@ export function Header({ items }: any) {
                bg-gray-700 border-gray-600 
                placeholder-gray-400 text-white 
                focus:ring-blue-500 ocus:border-blue-500"
+              defaultValue={"/"}
+              onChange={(e) => handleMenuItemNavigate(e.target.value)}
             >
-              <option selected>Choose a page</option>
+              <option value="/" disabled>
+                Search a page ...
+              </option>
               <option value="/">home</option>
-              <option value="/section1">home/section1</option>
-              <option value="/section2">home/section2</option>
+              <option value="/?section=1">home/section1</option>
+              <option value="/?section=2">home/section2</option>
               <option value="/page2">page2</option>
             </select>
           </div>
@@ -117,8 +136,14 @@ export function Header({ items }: any) {
               focus:ring-blue-500 focus:border-blue-500 
               bg-gray-700 placeholder-gray-400 
               text-white"
+              defaultValue={"/"}
+              onChange={(e) => {
+                handleMenuItemNavigate(e.target.value);
+              }}
             >
-              <option selected>Choose a page</option>
+              <option value="/" disabled>
+                Search a page ...
+              </option>
               <option value="/">home</option>
               <option value="/section1">home/section1</option>
               <option value="/section2">home/section2</option>

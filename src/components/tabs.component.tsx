@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export function Tabs({ tabs }: any) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const onSelectedIndex = (index: number) => {
     setActiveIndex(index);
   };
+  useEffect(() => {
+    let index = parseInt(searchParams.get("section") ?? "0") - 1;
+    if (index != activeIndex && (index === 0 || index === 1)) {
+      setActiveIndex(index);
+    }
+  }, [searchParams.get("section")]);
   const titles = tabs.map((tab: any, i: number) => {
     return (
       <li
