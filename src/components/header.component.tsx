@@ -25,7 +25,7 @@ export function Header({ items }: any) {
   return (
     <nav className="border-gray-200 px-2 sm:px-4 py-2.5 bg-gray-900">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
-        <a href="/home" className="flex items-center">
+        <a href="/" className="flex items-center">
           <span className="self-center text-xl font-semibold whitespace-nowrap text-white">
             myApp
           </span>
@@ -48,17 +48,21 @@ export function Header({ items }: any) {
               </svg>
               <span className="sr-only">Search icon</span>
             </div>
-            <input
-              type="text"
-              id="search-navbar"
+            <select
+              id="large"
               className="block w-full p-2 pl-10 text-sm
                border rounded-lg
                focus:ring-blue-500
                bg-gray-700 border-gray-600 
                placeholder-gray-400 text-white 
                focus:ring-blue-500 ocus:border-blue-500"
-              placeholder="Search..."
-            ></input>
+            >
+              <option selected>Choose a page</option>
+              <option value="/">home</option>
+              <option value="/section1">home/section1</option>
+              <option value="/section2">home/section2</option>
+              <option value="/page2">page2</option>
+            </select>
           </div>
           <button
             id="toggle-search"
@@ -106,16 +110,20 @@ export function Header({ items }: any) {
                 ></path>
               </svg>
             </div>
-            <input
-              type="text"
-              id="search-navbar"
+            <select
+              id="large"
               className="block w-full p-2 pl-10 text-sm 
               border border-gray-600 rounded-lg 
               focus:ring-blue-500 focus:border-blue-500 
               bg-gray-700 placeholder-gray-400 
               text-white"
-              placeholder="Search..."
-            ></input>
+            >
+              <option selected>Choose a page</option>
+              <option value="/">home</option>
+              <option value="/section1">home/section1</option>
+              <option value="/section2">home/section2</option>
+              <option value="/page2">page2</option>
+            </select>
           </div>
           <ul
             className="flex flex-col p-4 mt-4 border
