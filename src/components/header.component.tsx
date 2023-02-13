@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { NavigationItem } from "../utils/interfaces/data.interface";
 
 export function Header({ items }: any) {
@@ -5,9 +6,9 @@ export function Header({ items }: any) {
     return (
       <li key={item.id}>
         <a
-          href={item.link}
+          onClick={() => handleMenuItemNavigate(item.link)}
           className="block py-2 pl-3 pr-4 text-white bg-blue-700 
-            rounded md:bg-transparent md:text-blue-700 md:p-0"
+            rounded bg-transparent md:text-blue-700 md:p-0"
           aria-current="page"
         >
           {item.title}
@@ -15,6 +16,10 @@ export function Header({ items }: any) {
       </li>
     );
   });
+  function handleMenuItemNavigate(to: string) {
+    navigate(to);
+  }
+  const navigate = useNavigate();
   const searchForm = document.getElementById("navbar-search") as HTMLDivElement;
   const toggleBtn = () => searchForm.classList.toggle("hidden");
   return (
@@ -116,7 +121,7 @@ export function Header({ items }: any) {
             className="flex flex-col p-4 mt-4 border
            border-gray-700 rounded-lg md:flex-row 
            md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 
-           md:bg-white bg-gray-800 md:bg-gray-900"
+           bg-gray-800 md:bg-gray-900"
           >
             {contents}
           </ul>

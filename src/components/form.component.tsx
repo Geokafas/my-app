@@ -29,6 +29,8 @@ export function Form({ items }: any) {
       }
     } else if (phoneNum.length === 10 && !/^(6|2)\d{9}$/.test(phoneNum)) {
       setValidPhoneNum(false);
+    } else if (phoneNum.length < 10) {
+      setValidPhoneNum(false);
     } else {
       setValidPhoneNum(true);
     }

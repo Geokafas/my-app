@@ -1,8 +1,7 @@
 import { Carousel } from "react-responsive-carousel";
 
 export default ({ items }: any) => {
-  console.log(items);
-  const slides = items.data.map((slide: any, i: number) => {
+  const slides = items.map((slide: any, i: number) => {
     return (
       <div key={i} className="h-96">
         <img src={slide.image} className="object-cover h-96" />

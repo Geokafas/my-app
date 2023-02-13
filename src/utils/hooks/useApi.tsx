@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import HomeApi from "../apis/home.api";
-import { HomeResponse } from "../interfaces/data.interface";
 
 export default function useApiHook({ url }: any): any {
   const [data, setData] = useState({});
@@ -12,30 +11,30 @@ export default function useApiHook({ url }: any): any {
     async function init() {
       try {
         await HomeApi.get(url)
-        .then((response) => {
+          .then((response) => {
             if (isMounted) {
-                setData(response.data as HomeResponse);
+              setData(response.data);
             }
-        })
-        .catch((err) => {
+          })
+          .catch((err) => {
             if (isMounted) {
-                setError(err);
+              setError(err);
             }
-        });
+          });
       } catch (e: any) {
         if (isMounted) {
-            setError(e);
-          }
+          setError(e);
+        }
       } finally {
         if (isMounted) {
-            setLoading(false);
-          }
+          setLoading(false);
+        }
       }
     }
     init();
     return () => {
-        isMounted = false;
-      };
+      isMounted = false;
+    };
   }, []);
 
   return { data, error, loading };

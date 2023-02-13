@@ -61,6 +61,7 @@ export interface Slide {
   title: string;
   subtitle?: string;
   image: string;
+  hasLoaded?: boolean;
 }
 
 export interface SlideData {
