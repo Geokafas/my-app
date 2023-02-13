@@ -49,9 +49,9 @@ function App() {
   }, []);
 
   if (
-    sectionsLoadingStatus === "idle" &&
-    carouselLoadingStatus === "idle" &&
-    pageLoadingStatus === "idle"
+    sectionsLoadingStatus != "succeeded" ||
+    carouselLoadingStatus != "succeeded" ||
+    pageLoadingStatus != "succeeded"
   ) {
     return (
       <div className="loading">

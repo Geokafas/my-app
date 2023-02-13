@@ -12,7 +12,7 @@ export function Header({ items }: any) {
   };
   const contents = items.data.map((item: NavigationItem, i: number) => {
     return (
-      <li onClick={() => onSelectedIndex(i)}>
+      <li key={i} onClick={() => onSelectedIndex(i)}>
         <a
           onClick={() => handleMenuItemNavigate(item.link)}
           className={`block py-2 pl-3 pr-4 text-white bg-blue-700 

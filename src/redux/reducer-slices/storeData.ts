@@ -21,7 +21,6 @@ const initialState = {
 export const fetchcarousel = createAsyncThunk(
   "appData/fetchcarousel",
   async (url: string) => {
-    // Fetch the backend endpoint:
     const response = await HomeApi.get(url);
     return response.data.data;
   }
@@ -30,7 +29,6 @@ export const fetchcarousel = createAsyncThunk(
 export const fetchSections = createAsyncThunk(
   "appData/fetchSections",
   async (url: string) => {
-    // Fetch the backend endpoint:
     const response = await HomeApi.get(url);
     return response.data.data;
   }
@@ -39,7 +37,6 @@ export const fetchSections = createAsyncThunk(
 export const fetchPage = createAsyncThunk(
   "appData/fetchPage",
   async (url: string) => {
-    // Fetch the backend endpoint:
     const response = await HomeApi.get(url);
     return response.data.data;
   }
