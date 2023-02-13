@@ -9,7 +9,7 @@ import HomeApi from "../../utils/apis/home.api";
 const initialState = {
   carouselData: [] as Slide[],
   sectionsData: [] as Section[],
-  pageData: [] as Page2Data[],
+  pageData: {} as Page2Data,
   carouselLoadingStatus: "idle",
   sectionsLoadingStatus: "idle",
   pageLoadingStatus: "idle",
@@ -48,17 +48,7 @@ export const fetchPage = createAsyncThunk(
 export const storeDataSlice = createSlice({
   name: "storeData",
   initialState,
-  reducers: {
-    setCarouselData: (state, action) => {
-      state.carouselData = action.payload;
-    },
-    setSectionsData: (state, action) => {
-      state.sectionsData = action.payload;
-    },
-    setPageData: (state, action) => {
-      state.pageData = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers(builder: any) {
     builder
       .addCase(fetchcarousel.pending, (state: any) => {
@@ -88,7 +78,7 @@ export const storeDataSlice = createSlice({
       })
       .addCase(fetchPage.fulfilled, (state: any, action: any) => {
         state.pageLoadingStatus = "succeeded";
-        state.sectionsData = action.payload;
+        state.pageData = action.payload;
       })
       .addCase(fetchPage.rejected, (state: any, action: any) => {
         state.pageLoadingStatus = "failed";
@@ -104,8 +94,5 @@ export const selectSection1LoadingStatus = (state: any) =>
   state.sectionOneLoadingStatus;
 
 export const selectPageLoadingStatus = (state: any) => state.pageLoadingStatus;
-
-// Action creators are generated for each case reducer function
-export const { setCarouselData } = storeDataSlice.actions;
 
 export default storeDataSlice.reducer;

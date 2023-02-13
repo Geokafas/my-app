@@ -6,7 +6,6 @@ export function Home() {
   const { sectionsData, sectionsLoadingStatus } = useSelector(
     (state: any) => state.appData
   );
-
   const tabsData = [
     {
       title: "section 1",
