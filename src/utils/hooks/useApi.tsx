@@ -19,11 +19,13 @@ export default function useApiHook({ url }: any): any {
           .catch((err) => {
             if (isMounted) {
               setError(err);
+              console.log(err);
             }
           });
       } catch (e: any) {
         if (isMounted) {
           setError(e);
+          console.log(e);
         }
       } finally {
         if (isMounted) {

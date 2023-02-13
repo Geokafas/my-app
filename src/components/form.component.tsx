@@ -6,6 +6,12 @@ export function Form({ items }: any) {
   const [validPhoneNum, setValidPhoneNum] = useState(true);
   const [validPassword, setValidPassword] = useState(true);
 
+  const restValidators = () => {
+    setvalidEmail(true);
+    setValidPhoneNum(true);
+    setValidPassword(true);
+  };
+
   const responseBody: FormDataType = {};
   const validate = (prop: FormDataType) => {
     let phoneNum = prop["phone"].toString().replaceAll(" ", "");
@@ -20,7 +26,7 @@ export function Form({ items }: any) {
     } else {
       setValidPassword(false);
     }
-    if (phoneNum.length > 10 && !/^[0-9]{10,14}$/.test(phoneNum)) {
+    if (phoneNum.length > 10) {
       if (
         phoneNum.charAt(phoneNum.length - 10) !== "2" &&
         phoneNum.charAt(phoneNum.length - 10) !== "6"
@@ -49,6 +55,7 @@ export function Form({ items }: any) {
     formData.forEach(
       (value, property: string) => (responseBody[property] = value)
     );
+    restValidators();
     validate(responseBody);
     console.log(JSON.stringify(responseBody));
   };
